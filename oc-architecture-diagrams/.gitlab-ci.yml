@@ -1,0 +1,16 @@
+stages:
+  - validate
+
+validate_architecture:
+  stage: validate
+  image: python:3.12-slim
+  script:
+    - pip install -r requirements.txt
+    - python scripts/generate_architecture.py
+    - git diff --exit-code -- README.md docs/01_high_level_architecture.md docs/02_component_architecture.md || (echo 'Generated diagrams differ. Run python scripts/generate_architecture.py and commit docs changes.' && exit 1)
+  artifacts:
+    when: always
+    paths:
+      - README.md
+      - docs/01_high_level_architecture.md
+      - docs/02_component_architecture.md

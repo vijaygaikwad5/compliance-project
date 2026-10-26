@@ -1,0 +1,30 @@
+project: OC Compliance Platform
+stages:
+  - id: sources
+    name: Sources of Data
+    components:
+      - Azure CLI
+      - kubectl
+      - AppDir
+      - CMDB
+      - Azure Blob Storage
+      - Other Sources
+  - id: engine
+    name: Data Engine
+    components:
+      - application_details
+      - cluster_details
+      - namespace_details
+      - compliances
+      - compliance_rules
+      - compliance_results
+  - id: reporting
+    name: Reporting Tables - MEG Enterprise
+    components:
+      - oc_compliance_summary
+      - namespace_oc_compliance_view
+  - id: powerbi
+    name: Power BI
+    components:
+      - OC Compliance Percentage
+      - Namespace Compliance View
